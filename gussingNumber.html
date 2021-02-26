@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <title>Random Number</title>
+</head>
+<body class="background">
+    <div id="container">
+        <div id="header">
+            <h1 class="animate__animated animate__rubberBand">GUSSING GAME</h1>
+            <div id="center">
+                <h2 class="animate__animated animate__fadeInUpBig">Guess the right number between 1 and 100</h2>
+            </div>
+            <div>
+                <label type="text" for="guessField">Enter a guess: </label>
+                <input type="number" id="guessField" class="guessField"></br>
+                <div class="button btn-btn">
+                    <!-- Start Over button -->
+                   
+                    <!-- <button id='startover-btn' class="btnStartover" type="button">Start over</button> -->
+                    <button id='startover-btn' class="btnStartover" type="button" onClick="window.location.reload();">Play Again</button>
+                    <!-- Submit button -->
+                   
+                    <button id='submit-btn' class="btnSubmit" type="button">Submit</button></button>
+                </div>
+            </div>
+        </div>
+        <div id="middle">
+            <p class="guessLower"> </p>
+            <p class="correctGuesses"> </p>
+            <p class="guessHigher"></p>
+        </div>
+        <div id="footer">
+            <div id="attempt">
+                <p>Attempts: </p>
+                <p id="attempts"> </p>
+            </div>
+            <div id="user">
+                <p>User Scores: </p>
+                <p id="userScores"></p>
+            </div>
+            <div id="computer">
+                <p>Computer Scores:</p>
+                <p id="computerScores"> </p>
+            </div>
+        </div> 
+    </div>
+    <script>
+  
+        var randomNumber = Math.floor(Math.random() * 100) + 1;
+        // var guessField = document.querySelector('#guessField').value;
+        var submitBtn = document.querySelector('#submit-btn');
+        var startOver = document.querySelector('#startover-btn');
+        var correctGuesses = document.querySelector('.correctGuesses');
+        var guessLower = document.querySelector('.guessLower');
+        var guessHigher = document.querySelector('.guessHigher');
+        var attempts = 10;
+        var userScores = 0;
+        var computerScores = 0;
+        console.log(randomNumber);
+        var p = document.createElement("p");
+            var textCorrect = document.createTextNode('CONGRATULATIONS!!! YOU GUESSED IT CORRECTLY');
+            // p.appendChild(textCorrect);
+            var ph = document.createElement("p");
+            var textHigher = document.createTextNode('GUESS HIGHER NUMBER!!');
+            // p.appendChild(textHigher);
+            var pl = document.createElement("p");
+            var textLower = document.createTextNode('GUESS LOWER NUMBER!!');
+            // p.appendChild(textLower);
+
+        //////////// checking number function////////////////////////////////////////
+        submitBtn.addEventListener('click', function game(playGame) {
+            playGame.preventDefault();
+            var guessField = document.querySelector('#guessField').value;
+            document.querySelector('#attempts').innerHTML = attempts;
+            document.getElementById('userScores').innerHTML = userScores;
+            document.getElementById('computerScores').innerHTML = computerScores;
+
+            if (randomNumber == guessField) {
+                // alert("CONGRATULATIONS!!! YOU GUESSED IT RIGHT IN GUESS ");green
+                correctGuesses.style.backgroundColor = "#1b4332"
+                correctGuesses.appendChild(p);
+                p.appendChild(textCorrect);
+                userScores = 10
+                attempts-=1
+
+                //     setTimeout(() => {
+                //         correctGuesses.style.backgroundColor = ""
+                //         p.removeChild(textCorrect);
+                //         location.reload();
+                //     }, 5000);
+            }
+            if (randomNumber > guessField) {
+                //alert("YOUr GUESSED IT lower IN GUESS ");red
+                guessHigher.style.backgroundColor = "#370617"
+                ph.appendChild(textHigher);
+                guessHigher.appendChild(ph);
+                computerScores++
+                attempts-=1
+
+                setTimeout(() => {
+                    guessHigher.style.backgroundColor = ""
+                    ph.removeChild(textHigher);
+                    guessHigher.removeChild(ph);
+                }, 1000);
+            }
+            if (randomNumber < guessField) {
+                //alert("YOU GUESSED IT higher IN GUESS ");blue
+                guessLower.style.backgroundColor = "#03045e"
+                guessLower.appendChild(pl);
+                pl.appendChild(textLower);
+                computerScores++
+                attempts-=1
+
+                setTimeout(() => {
+                    guessLower.style.backgroundColor = ""
+                    guessLower.removeChild(pl);
+                    pl.removeChild(textLower);
+                }, 1000);
+            }
+           if (guessField > 100 || guessField < 1) {
+                alert("not valid number! ");
+                // computerScores++
+                // attempts--
+                guessLower. style.visibility = "hidden";
+                guessHigher.style.visibility = "hidden";
+            }
+
+         if (attempts == -1 && guessField !== randomNumber) {
+                alert("GAME OVER!!");
+                location.reload();
+            }
+            console.log('computerScores: ', computerScores);
+            console.log('userScores: ', userScores);
+            console.log('attempts: ', attempts);
+        })
+    </script>
+</body>
+</html>

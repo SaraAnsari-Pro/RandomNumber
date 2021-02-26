@@ -1,0 +1,131 @@
+body {
+  background-image: url('pexels-adam-fejes-4668244 (4).jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-size: 100% 100%;
+width: 100%;
+height: 100%;
+}
+
+
+#container {
+  text-align: center;
+  color: #ffffff;
+  letter-spacing: 1px;
+  font-size: 20px;
+  display: flex;
+ flex-direction: column;
+  height: 100vh;
+
+}
+input#guessField {
+  padding: 10px;
+  width: 200px;
+  color: #000;
+  background-color: #e9fff6;
+  font-size: 20px;
+}
+
+ h1{
+font-size: 40px;
+animation-duration:3000ms;
+}
+:hover h1 {
+  color: #ffd700;
+}
+#header{
+  flex-grow: 1;
+}
+#middle{
+  flex-grow: 1;
+
+}
+div#middle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* border: 2px solid yellow; */
+
+}
+p.guessHigher {
+  flex-grow: 1;
+/* border:2px solid goldenrod; */
+font-weight: bold;
+color: #ffffff;
+}
+p.guessLower {
+  flex-grow: 1;
+  font-weight: bold;
+  color: #ffffff;
+
+  /* border:2px solid goldenrod; */
+
+}
+p.correctGuesses {
+  flex-grow: 1;
+  font-weight: bold;
+  color: #ffffff;
+
+  /* border:2px solid goldenrod; */
+
+}
+.button.btn-btn {
+  margin-top: 20px;
+}
+
+button#startover-btn {
+  margin-left: 20px;
+}
+
+button#submit-btn {
+  margin-left: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 120px;
+  height: 30px;
+}
+
+button#startover-btn {
+  margin-left: 20px;
+  width: 100px;
+  height: 30px;
+}
+
+button {
+  border: 2px solid rgb(139 146 156);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
+  font-weight: bold;
+}
+
+button:hover {
+  background:#ffd700;
+}
+#footer{
+flex-grow: 1;
+align-self: flex-end;
+
+}
+div#footer {
+  height: 180px;
+  width: 300px;
+  background: rgba(0, 0, 0, 0.7);
+}
+/* p{
+  display: flex; 
+}*/
+
+div#attempt {
+  display: flex;
+  justify-content: space-evenly;
+}
+div#user{
+  display: flex;
+  justify-content: space-evenly;
+}
+div#computer{
+  display: flex;
+  justify-content: space-evenly;
+}
